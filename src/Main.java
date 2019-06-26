@@ -1,4 +1,6 @@
-import controller.ConsoleHandler;
+import controller.BetConsoleHandler;
+import controller.CityConsoleHandler;
+import controller.Handler;
 import dao.BetDaoImpl;
 import dao.CityDaoImpl;
 import dao.DaoInterface;
@@ -17,13 +19,15 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Если хотите сделать ставку, введите \n" +
                 "сумму и риск через пробел (Для завершения работы введите 0):");
-        ConsoleHandler.handleBet();
+        Handler betConsoleHandler = new BetConsoleHandler();
+        betConsoleHandler.handle();
         DaoInterface betDao = new BetDaoImpl();
         System.out.println(betDao.getAll() + "\n");
 
         System.out.println("Для внесения города в реестр, введите \n" +
                 "Название и численность населения через пробел (Для завершения работы введите 0):");
-        ConsoleHandler.handleCity();
+        Handler cityConsoleHandler = new CityConsoleHandler();
+        cityConsoleHandler.handle();
         DaoInterface cityDao = new CityDaoImpl();
         System.out.println(cityDao.getAll() + "\n");
     }
