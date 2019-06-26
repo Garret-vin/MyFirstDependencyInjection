@@ -17,17 +17,17 @@ public class Injector {
 
         Field[] consoleHandlerFields = consoleHandlerClass.getDeclaredFields();
         for (Field field : consoleHandlerFields) {
-            if (field.getDeclaredAnnotation(Inject.class) != null) {
+            if (field.isAnnotationPresent(Inject.class)) {
                 field.setAccessible(true);
                 String fieldName = field.getName();
                 switch (fieldName) {
                     case "betDao":
-                        if (betDaoClass.getDeclaredAnnotation(Dao.class) != null) {
+                        if (betDaoClass.isAnnotationPresent(Dao.class)) {
                             field.set(null, BetDaoFactory.getInstance());
                         }
                         break;
                     case "cityDao":
-                        if (cityDaoClass.getDeclaredAnnotation(Dao.class) != null) {
+                        if (cityDaoClass.isAnnotationPresent(Dao.class)) {
                             field.set(null, CityDaoFactory.getInstance());
                         }
                         break;

@@ -11,11 +11,11 @@ public class CityDaoImpl implements DaoInterface<City> {
 
     @Override
     public void add(City city) {
-        Storage.cities.add(city);
+        Storage.CITIES.add(city);
     }
 
     @Override
     public List<City> getAll() {
-        return Storage.cities;
+        return Storage.CITIES;
     }
 }
